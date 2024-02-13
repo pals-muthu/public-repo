@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import UsersPage, { loader as UsersLoader} from './pages/UsersPage';
+import UsersPage, { loader as UsersLoader, ErrorFetchingUsers} from './pages/UsersPage';
 import Root from './pages/Root';
 import UserDetailPage from './pages/UserDetailPage';
 
@@ -17,8 +17,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/users',
+        loader: UsersLoader,
         element: <UsersPage />,
-        loader: UsersLoader
+        errorElement: <ErrorFetchingUsers />
       },
       {
         // TODO - use data from the users page, get the id alone from query parages
