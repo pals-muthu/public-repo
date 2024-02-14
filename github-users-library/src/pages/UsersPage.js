@@ -67,6 +67,7 @@ const loadUsers = async () => {
       eachResponse.json()
     )
     detailedResponses = await Promise.all(detailedResponses)
+    console.log('detailedResponses: ', detailedResponses);
     return detailedResponses
   } catch (error) {
     console.log(error)
