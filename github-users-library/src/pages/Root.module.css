@@ -1,0 +1,26 @@
+.rootGrid {
+  padding: 0.5rem;
+}
+
+.logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.home {
+  padding: 0;
+  margin: 0;
+  color: #fff !important;
+}
+
+.mainText {
+  p {
+    padding: 0;
+    margin: 0;
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px;
+  }
+}

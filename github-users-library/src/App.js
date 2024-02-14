@@ -8,6 +8,7 @@ import UsersPage, {
 } from "./pages/UsersPage"
 import Root from "./pages/Root"
 import UserDetailPage, {
+  ErrorFetchingUser,
   loader as UserDetailLoader
 } from "./pages/UserDetailPage"
 
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
         // TODO - use data from the users page, get the id alone from query parages
         path: "/users/:id",
         loader: UserDetailLoader,
-        element: <UserDetailPage />
+        element: <UserDetailPage />,
+        errorElement: <ErrorFetchingUser />
       }
     ]
   }

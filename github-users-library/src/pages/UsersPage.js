@@ -3,8 +3,8 @@ import { useLoaderData, defer, Await } from "react-router-dom"
 import { CircularProgress } from "@mui/material"
 import * as React from "react"
 import CssBaseline from "@mui/material/CssBaseline"
-import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
+import classes from "./UsersPage.module.css"
 
 const UsersPage = () => {
   // data is automatically extracted from the response object.
@@ -12,18 +12,16 @@ const UsersPage = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="sm">
-        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
-          <React.Suspense fallback={<CircularProgress color="inherit" />}>
-            <Await resolve={users}>
-              {(usersInfo) =>
-                usersInfo.map((eachUserInfo) => (
-                  <UserCard key={eachUserInfo.id} userInfo={eachUserInfo} />
-                ))
-              }
-            </Await>
-          </React.Suspense>
-        </Box>
+      <Container maxWidth="sm" className={classes.container}>
+        <React.Suspense fallback={<CircularProgress color="inherit" />}>
+          <Await resolve={users}>
+            {(usersInfo) =>
+              usersInfo.map((eachUserInfo) => (
+                <UserCard key={eachUserInfo.id} userInfo={eachUserInfo} />
+              ))
+            }
+          </Await>
+        </React.Suspense>
       </Container>
     </React.Fragment>
   )

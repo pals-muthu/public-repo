@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia"
 import Typography from "@mui/material/Typography"
 import Button from "@mui/material/Button"
 import { useNavigate } from "react-router-dom"
+import classes from "./UserCard.module.css"
 
 const UserCard = (props) => {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ const UserCard = (props) => {
   }
 
   return (
-    <Card sx={{ display: "flex" }}>
+    <Card sx={{ display: "flex" }} className={classes.card}>
       <CardMedia
         component="img"
         sx={{ width: 151 }}
@@ -36,9 +37,10 @@ const UserCard = (props) => {
           </Typography>
           <Button
             size="medium"
-            type="outlined"
+            variant="outlined"
             color="primary"
             onClick={onClickHandler}
+            className={classes.infoBtn}
           >
             More Info
           </Button>

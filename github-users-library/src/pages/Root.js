@@ -2,7 +2,8 @@ import { Outlet, useNavigate } from "react-router-dom"
 import * as React from "react"
 import CssBaseline from "@mui/material/CssBaseline"
 import Container from "@mui/material/Container"
-import { AppBar } from "@mui/material"
+import { AppBar, Button, Grid } from "@mui/material"
+import classes from "./Root.module.css"
 
 const Root = () => {
   const navigate = useNavigate()
@@ -15,15 +16,28 @@ const Root = () => {
     <>
       {/* TODO - add header navigation here and container here and make the header sticky */}
       <AppBar position="sticky">
-        <div>
+        <Grid container direction="row" className={classes.rootGrid}>
           <img
             src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
-            height={"40px"}
-            width={"40px"}
             onClick={onClickHandler}
+            className={classes.logo}
           />
-          <p>Github Users Library</p>
-        </div>
+          <Button
+            variant="text"
+            size="medium"
+            onClick={onClickHandler}
+            className={classes.home}
+          >
+            Home
+          </Button>
+          <Grid>
+            <Grid container direction="row" className={classes.mainText}>
+              <Grid item>
+                <p>Github Users Library</p>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </AppBar>
       <React.Fragment>
         <CssBaseline />
