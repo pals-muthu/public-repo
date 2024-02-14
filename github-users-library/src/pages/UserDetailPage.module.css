@@ -20,3 +20,14 @@
 .info2 {
   padding-top: 0;
 }
+
+.tableContainer {
+  padding: 0.25rem;
+  div {
+    border-width: 0.1rem;
+    border-color: grey;
+    border-style: solid;
+    border-radius: 2%;
+  }
+  
+}
