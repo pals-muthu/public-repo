@@ -33,7 +33,7 @@ const UserDetailPage = () => {
                     <Grid>
                       <Grid>
                         <p>Location: {userInfo.location}</p>
-                        <p>Open to hire: {userInfo.hireable ? "Yes" : "No"}</p>
+                        <p>Available for hire: {userInfo.hireable ? "Yes" : "No"}</p>
                       </Grid>
                     </Grid>
                     <Grid>
@@ -46,9 +46,17 @@ const UserDetailPage = () => {
                     </Grid>
                     <Grid>
                       <p>
+                        Following:{" "}
+                        <a href={userInfo.following_url} target="_blank">
+                          {userInfo.following}
+                        </a>
+                      </p>
+                    </Grid>
+                    <Grid>
+                      <p>
                         Repos:{" "}
                         <a href={userInfo.repos_url} target="_blank">
-                          Click Here
+                          {userInfo.repoInfo.length}
                         </a>
                       </p>
                     </Grid>
@@ -93,8 +101,8 @@ const loadUser = async (id) => {
       headers: {
         ...(process.env.REACT_APP_GITHUB_TOKEN
           ? {
-              Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
-            }
+            Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
+          }
           : null),
         Accept: "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28"
@@ -102,6 +110,26 @@ const loadUser = async (id) => {
     })
 
     const resData = await response.json()
+
+    // get the repos here
+    const repoResponse = await fetch(`https://api.github.com/users/${id}/repos?per_page=200`, {
+      headers: {
+        ...(process.env.REACT_APP_GITHUB_TOKEN
+          ? {
+            Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
+          }
+          : null),
+        Accept: "application/vnd.github+json",
+        "X-GitHub-Api-Version": "2022-11-28"
+      }
+    })
+
+    const repoData = await repoResponse.json()
+    if (repoData.length) {
+      resData.repoInfo = repoData
+    } else {
+      resData.repoInfo = []
+    }
     console.log("resData: ", resData)
     return resData
   } catch (error) {

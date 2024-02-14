@@ -53,8 +53,8 @@ const loadUsers = async () => {
           headers: {
             ...(process.env.REACT_APP_GITHUB_TOKEN
               ? {
-                  Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
-                }
+                Authorization: `Bearer ${process.env.REACT_APP_GITHUB_TOKEN}`
+              }
               : null),
             Accept: "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28"
