@@ -13,6 +13,7 @@
   padding-left: 0 !important;
   margin-left: 0 !important;
   .button {
+    height: 40px;
     color: #fff !important;
     text-transform: none !important;
   }
@@ -20,6 +21,12 @@
 
 .headerContainer {
   width: 85%;
+  @media only screen and (max-width: 1000px) {
+    width: 70%;
+  }
+  @media only screen and (max-width: 900px) {
+    width: 60%;
+  }
 }
 
 .mainText {
