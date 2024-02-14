@@ -1,10 +1,10 @@
 import UserCard from "../components/UserCard"
 import { useLoaderData, defer, Await } from "react-router-dom"
-import { CircularProgress } from "@mui/material"
 import * as React from "react"
 import CssBaseline from "@mui/material/CssBaseline"
 import Container from "@mui/material/Container"
 import classes from "./UsersPage.module.css"
+import Spinner from "../components/Spinner"
 
 const UsersPage = () => {
   // data is automatically extracted from the response object.
@@ -13,7 +13,7 @@ const UsersPage = () => {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="sm" className={classes.container}>
-        <React.Suspense fallback={<CircularProgress color="inherit" />}>
+        <React.Suspense fallback={<Spinner />}>
           <Await resolve={users}>
             {(usersInfo) =>
               usersInfo.map((eachUserInfo) => (

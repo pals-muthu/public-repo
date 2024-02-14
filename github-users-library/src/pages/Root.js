@@ -16,24 +16,33 @@ const Root = () => {
     <>
       {/* TODO - add header navigation here and container here and make the header sticky */}
       <AppBar position="sticky">
-        <Grid container direction="row" className={classes.rootGrid}>
-          <img
-            src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
-            onClick={onClickHandler}
-            className={classes.logo}
-          />
-          <Button
-            variant="text"
-            size="medium"
-            onClick={onClickHandler}
-            className={classes.home}
-          >
-            Home
-          </Button>
-          <Grid>
+        <Grid
+          container
+          direction="row"
+          className={classes.rootGrid}
+          spacing={3}
+        >
+          <Grid item xs="auto">
+            <img
+              src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"
+              onClick={onClickHandler}
+              className={classes.logo}
+            />
+          </Grid>
+          <Grid item className={classes.home} xs="auto">
+            <Button
+              variant="text"
+              size="medium"
+              onClick={onClickHandler}
+              className={classes.button}
+            >
+              Home
+            </Button>
+          </Grid>
+          <Grid item className={classes.headerContainer}>
             <Grid container direction="row" className={classes.mainText}>
-              <Grid item>
-                <p>Github Users Library</p>
+              <Grid item xs="auto">
+                <p>GitHub Users Library</p>
               </Grid>
             </Grid>
           </Grid>

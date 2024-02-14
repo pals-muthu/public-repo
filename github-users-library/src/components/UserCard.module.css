@@ -3,6 +3,6 @@
 }
 
 .infoBtn {
-  text-transform: none;
+  text-transform: none !important;
   margin-top: 0.5rem;
 }

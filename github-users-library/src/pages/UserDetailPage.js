@@ -3,8 +3,9 @@ import CssBaseline from "@mui/material/CssBaseline"
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 import { useLoaderData, defer, Await } from "react-router-dom"
-import { CircularProgress, Grid } from "@mui/material"
+import { Grid } from "@mui/material"
 import classes from "./UserDetailPage.module.css"
+import Spinner from "../components/Spinner"
 
 const UserDetailPage = () => {
   const { user } = useLoaderData()
@@ -12,66 +13,65 @@ const UserDetailPage = () => {
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="sm" className={classes.container}>
-        <Box
-          // sx={{ bgcolor: "#cfe8fc", height: "80vh" }}
-          className={classes.box}
-        >
-          <React.Suspense fallback={<CircularProgress color="inherit" />}>
+        <Box className={classes.box}>
+          <React.Suspense fallback={<Spinner />}>
             <Await resolve={user}>
               {(userInfo) => (
-                <Box sx={{ flexGrow: 1 }}>
-                  <Grid container spacing={2}>
-                    <Grid item xs={8}>
+                <Grid container>
+                  <Grid item xs={8}>
+                    <Grid>
+                      <p>Name: {userInfo.name}</p>
+                    </Grid>
+                    <Grid>
+                      <p>
+                        Username:{" "}
+                        <a href={userInfo.html_url} target="_blank">
+                          {userInfo.login}
+                        </a>
+                      </p>
+                    </Grid>
+                    <Grid>
                       <Grid>
-                        <p>Name: {userInfo.name}</p>
-                      </Grid>
-                      <Grid>
-                        <p>
-                          Username:{" "}
-                          <a href={userInfo.html_url} target="_blank">
-                            {userInfo.login}
-                          </a>
-                        </p>
-                      </Grid>
-                      <Grid>
-                        <Grid>
-                          <p>Location: {userInfo.location}</p>
-                        </Grid>
+                        <p>Location: {userInfo.location}</p>
                         <p>Open to hire: {userInfo.hireable ? "Yes" : "No"}</p>
                       </Grid>
                     </Grid>
-                    <Grid item xs={4}>
-                      <Grid>
-                        <img
-                          src={userInfo.avatar_url}
-                          height={"151px"}
-                          width={"151px"}
-                        />
-                      </Grid>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Grid>
+                    <Grid>
+                      <p>
                         Followers:{" "}
                         <a href={userInfo.followers_url} target="_blank">
                           {userInfo.followers}
                         </a>
-                      </Grid>
-                      <Grid>
+                      </p>
+                    </Grid>
+                    <Grid>
+                      <p>
                         Repos:{" "}
                         <a href={userInfo.repos_url} target="_blank">
-                          {userInfo.repos_url}
+                          Click Here
                         </a>
-                      </Grid>
-                      <Grid>
+                      </p>
+                    </Grid>
+                    <Grid>
+                      <p>
                         Blog:{" "}
-                        <a href={userInfo.blog} target="_blank">
-                          {userInfo.blog}
+                        <a href={userInfo.blog || ""} target="_blank">
+                          {userInfo.blog || "NA"}
                         </a>
-                      </Grid>
-                      <Grid></Grid>
+                      </p>
+                    </Grid>
+                    <Grid></Grid>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Grid>
+                      <img
+                        src={userInfo.avatar_url}
+                        height={"151px"}
+                        width={"151px"}
+                      />
                     </Grid>
                   </Grid>
-                </Box>
+                </Grid>
               )}
             </Await>
           </React.Suspense>

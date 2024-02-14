@@ -5,4 +5,18 @@
 .box {
   border-radius: 2%;
   background-color: #edf6f9;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  p {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  img {
+    border-radius: 5%;
+  }
+}
+
+.info2 {
+  padding-top: 0;
 }
