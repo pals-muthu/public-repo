@@ -1,10 +1,10 @@
-import UserCard from "../components/UserCard";
 import { useLoaderData, defer, Await } from "react-router-dom";
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import classes from "./UsersPage.module.css";
 import Spinner from "../components/Spinner";
+import UsersList from "../components/UsersList";
 
 const UsersPage = () => {
   // data is automatically extracted from the response object.
@@ -15,11 +15,7 @@ const UsersPage = () => {
       <Container maxWidth="sm" className={classes.container}>
         <React.Suspense fallback={<Spinner />}>
           <Await resolve={users}>
-            {(usersInfo) =>
-              usersInfo.map((eachUserInfo) => (
-                <UserCard key={eachUserInfo.id} userInfo={eachUserInfo} />
-              ))
-            }
+            {(usersInfo) => <UsersList usersInfo={usersInfo} />}
           </Await>
         </React.Suspense>
       </Container>
@@ -67,7 +63,7 @@ const loadUsers = async () => {
       eachResponse.json()
     );
     detailedResponses = await Promise.all(detailedResponses);
-    console.log("detailedResponses: ", detailedResponses);
+    // console.log("detailedResponses: ", detailedResponses);
     return detailedResponses;
   } catch (error) {
     console.log(error);

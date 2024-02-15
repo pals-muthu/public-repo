@@ -2,11 +2,22 @@ import { Outlet, useNavigate } from "react-router-dom";
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
-import { AppBar, Button, Grid } from "@mui/material";
+import { AppBar, Button, Grid, TextField } from "@mui/material";
 import classes from "./Root.module.css";
+import { useDispatch } from "react-redux";
+import { searchActions } from "../store/FilterStore";
 
 const Root = () => {
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const userChangeHandler = (e) => {
+    dispatch(searchActions.updateUser({ value: e.target.value }));
+  };
+  const locationChangeHandler = (e) => {
+    dispatch(searchActions.updateLocation({ value: e.target.value }));
+  };
 
   const onClickHandler = () => {
     navigate(`/users`);
@@ -43,6 +54,20 @@ const Root = () => {
             <Grid container direction="row" className={classes.mainText}>
               <Grid item xs="auto">
                 <p>GitHub Users Library</p>
+              </Grid>
+              <Grid item xs="auto">
+                <TextField
+                  id="outlined-basic"
+                  label="User"
+                  variant="outlined"
+                  onChange={userChangeHandler}
+                />
+                <TextField
+                  id="outlined-basic"
+                  label="Location"
+                  variant="outlined"
+                  onChange={locationChangeHandler}
+                />
               </Grid>
             </Grid>
           </Grid>

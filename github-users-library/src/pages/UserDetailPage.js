@@ -187,7 +187,7 @@ const loadUser = async (id) => {
         resData.repoInfo = [];
       }
     }
-    console.log("resData: ", resData);
+    // console.log("resData: ", resData);
     return resData;
   } catch (error) {
     console.log(error);
