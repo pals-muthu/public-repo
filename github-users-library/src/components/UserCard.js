@@ -1,19 +1,19 @@
-import * as React from "react"
-import Box from "@mui/material/Box"
-import Card from "@mui/material/Card"
-import CardContent from "@mui/material/CardContent"
-import CardMedia from "@mui/material/CardMedia"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import { useNavigate } from "react-router-dom"
-import classes from "./UserCard.module.css"
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import classes from "./UserCard.module.css";
 
 const UserCard = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onClickHandler = () => {
-    navigate(`/users/${props.userInfo.login}`)
-  }
+    navigate(`/users/${props.userInfo.login}`);
+  };
 
   return (
     <Card sx={{ display: "flex" }} className={classes.card}>
@@ -47,7 +47,7 @@ const UserCard = (props) => {
         </CardContent>
       </Box>
     </Card>
-  )
-}
+  );
+};
 
-export default UserCard
+export default UserCard;

@@ -1,6 +1,6 @@
-import React from "react"
-import classes from "./Spinner.module.css"
-import { Grid, CircularProgress } from "@mui/material"
+import React from "react";
+import classes from "./Spinner.module.css";
+import { Grid, CircularProgress } from "@mui/material";
 
 const Spinner = () => {
   return (
@@ -13,7 +13,7 @@ const Spinner = () => {
     >
       <CircularProgress color="inherit" />
     </Grid>
-  )
-}
+  );
+};
 
-export default Spinner
+export default Spinner;

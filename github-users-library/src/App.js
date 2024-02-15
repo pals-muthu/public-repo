@@ -1,16 +1,16 @@
-import "./App.css"
-import React from "react"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import HomePage from "./pages/HomePage"
+import "./App.css";
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import UsersPage, {
   loader as UsersLoader,
   ErrorFetchingUsers
-} from "./pages/UsersPage"
-import Root from "./pages/Root"
+} from "./pages/UsersPage";
+import Root from "./pages/Root";
 import UserDetailPage, {
   ErrorFetchingUser,
   loader as UserDetailLoader
-} from "./pages/UserDetailPage"
+} from "./pages/UserDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -36,10 +36,10 @@ const router = createBrowserRouter([
       }
     ]
   }
-])
+]);
 
 function App() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

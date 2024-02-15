@@ -1,16 +1,16 @@
-import { Outlet, useNavigate } from "react-router-dom"
-import * as React from "react"
-import CssBaseline from "@mui/material/CssBaseline"
-import Container from "@mui/material/Container"
-import { AppBar, Button, Grid } from "@mui/material"
-import classes from "./Root.module.css"
+import { Outlet, useNavigate } from "react-router-dom";
+import * as React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
+import { AppBar, Button, Grid } from "@mui/material";
+import classes from "./Root.module.css";
 
 const Root = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const onClickHandler = () => {
-    navigate(`/users`)
-  }
+    navigate(`/users`);
+  };
 
   return (
     <>
@@ -55,7 +55,7 @@ const Root = () => {
         </Container>
       </React.Fragment>
     </>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;
